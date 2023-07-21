@@ -1,8 +1,13 @@
 const _browser = chrome ?? browser;
 
+console.log('Hello from the background script!');
+
+const networkRuleId = 1;
+
 _browser.declarativeNetRequest.updateDynamicRules({
+  removeRuleIds: [networkRuleId],
   addRules: [{
-    id: 1,
+    id: networkRuleId,
     priority: 1,
     action: {
       type: _browser.declarativeNetRequest.RuleActionType.REDIRECT,
@@ -12,6 +17,5 @@ _browser.declarativeNetRequest.updateDynamicRules({
       urlFilter: '.*',
       resourceTypes: [_browser.declarativeNetRequest.ResourceType.IMAGE]
     }
-  }],
-  removeRuleIds: [1]
+  }]
 }).catch(() => { });
