@@ -1,7 +1,5 @@
 const _browser = chrome ?? browser;
 
-console.log('Hello from the background script!');
-
 const networkRuleId = 1;
 
 _browser.declarativeNetRequest.updateDynamicRules({
